@@ -1,4 +1,5 @@
 ActiveAdmin.register Post do
+  config.per_page = 5
   show do
     attributes_table do
      row  :title
@@ -18,8 +19,12 @@ ActiveAdmin.register Post do
 
    permit_params :title,:description,:is_published, comments_attributes: [ :id, :body, :post_id]
 
+   scope :all, default: true
+    scope("Active") { |scope| scope.where(is_published: true) }
+    scope("Inactive") { |scope| scope.where(is_published: false) }
 
    index do
+     selectable_column
      column :id
      column :title, :sortable => :title
      column :description, :sortable => :description

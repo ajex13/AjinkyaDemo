@@ -31,6 +31,11 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+#gem 'jquery-datatables-rails', '~> 3.4.0'
+#
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
+gem 'will_paginate', '~> 3.1', '>= 3.1.5'
+#gem 'will_paginate', "3.0.pre2"
 gem 'devise-bootstrapped', '~> 0.1.1'
 gem 'faker', '~> 1.7', '>= 1.7.3'
 gem 'devise', '~> 4.2', '>= 4.2.1'
