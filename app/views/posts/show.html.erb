@@ -10,7 +10,25 @@
       <%= @post.description %>
     </p>
 
+    <strong>Add Comment</strong>
+    <% @comments.each do |comment| %>
+    <hr>
+    <%= comment.body%> <br>
+    <% end %>
+    <hr>
+<%= form_for([@post,@comment]) do |f| %>
 
+
+
+
+
+    <%= f.text_area :body, placeholder: "say something ...", class: "form-control" %> <br>
+    <%= f.hidden_field :post_id,value: @post.id %>
+    <%= f.submit "Add Comment",class:"btn btn-primary"%>
+<% end %>
+
+
+<br>
     <%= link_to 'Edit', edit_post_path(@post) %> |
     <%= link_to 'Back', posts_path %>
   </div>
