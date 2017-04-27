@@ -1,15 +1,47 @@
 ActiveAdmin.register Post do
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
+  show do
+    attributes_table do
+     row  :title
+     row  :description
+     row  :is_published
+    end
 
+    panel 'Comments' do
+      table_for post.comments do
+        column :body
+
+      end
+    end
+  end
+
+
+
+   permit_params :title,:description,:is_published, comments_attributes: [ :id, :body, :post_id]
+
+
+   index do
+     column :id
+     column :title, :sortable => :title
+     column :description, :sortable => :description
+     column :is_published, :sortable => :is_published
+     actions
+   end
+   form do |f|
+     f.inputs 'Post' do
+       f.input :title
+       f.input :description
+       f.input :is_published
+
+     end
+
+
+
+     f.inputs do
+       f.has_many :comments, new_record: 'Add comments',
+         allow_destroy: proc { |comment| comment } do |b|
+         b.input :body
+       end
+     end
+     f.actions
+   end
 end
