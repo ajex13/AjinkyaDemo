@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 #gem 'jquery-datatables-rails', '~> 3.4.0'
+gem 'cancancan', '~> 1.16'
 #
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 gem 'will_paginate', '~> 3.1', '>= 3.1.5'

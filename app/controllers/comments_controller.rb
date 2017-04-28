@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
 before_action :authenticate_user!, except: [:index,:show]
+load_and_authorize_resource
   def new
     @comment = Comment.new
     @post = Post.find(params[:post_id])
   end
   def create
     @comment = Comment.new(comment_params)
-    #@comment.user_id = current_user.id
+    @comment.user_id = current_user.id
     @post  = Post.find(params[:post_id])
     if @comment.save
       redirect_to :back, notice: "Thank you for adding a comment"
