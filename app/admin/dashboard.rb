@@ -28,15 +28,8 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
       end
-      column do
-        panel "Top contributors" do
-          ul do
-            User.order("users.posts_count DESC").limit(10).map do |user|
-              li link_to( user.email , admin_user_path(user))
-            end
-          end
-        end
-      end
+
+
     end
   end # content
 end
