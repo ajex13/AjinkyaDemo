@@ -6,7 +6,16 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.paginate(:page => params[:page], :per_page => 10)
+    if params[:search]
+
+      @posts = Post.where("is_published = ? AND title LIKE ?", true, "%#{params[:search]}%").order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+      if @posts == []
+        flash.now[:alert] = "No such posts yet! Please seach something else.. "
+        @posts = Post.where("is_published = ?", true).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+      end
+    else
+      @posts = Post.where("is_published = ?", true).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+    end
   end
 
   # GET /posts/1

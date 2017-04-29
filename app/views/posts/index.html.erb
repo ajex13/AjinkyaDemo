@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="row">
     <div class="col-xs-6">
@@ -18,8 +17,8 @@
         <th>Title</th>
         <th>Description</th>
         <th>Author</th>
-        <th>Published</th>
         <% if can? :update, Post.new %>
+        <th>Published</th>
         <th colspan="2"></th>
         <% end %>
       </tr>
@@ -31,8 +30,8 @@
           <td><%= link_to post.title , post  %></td>
           <td><%= truncate(post.description,length: 130 ) %></td>
           <td><%= post.user.email %></td>
-          <td><%= post.is_published %></td>
           <% if can? :update, Post.new %>
+          <td><%= post.is_published %></td>
           <td><%= link_to 'Edit', edit_post_path(post)  %></td>
           <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
           <% end %>
