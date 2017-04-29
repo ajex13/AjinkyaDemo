@@ -11,7 +11,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-#after_create :send_welcome_note_to_user
+after_create :send_welcome_note_to_user
 after_create :define_user_default_role
 
 
