@@ -22,7 +22,7 @@
           <!--search -->
           <!-- <form class="navbar-form navbar-left"> -->
             <!-- <div class="input-group"> -->
-              <%= form_tag( {:controller => "posts", :action => "index"}, :method => "get", role:"search", :class => 'nav navbar-form navbar-left') do %>
+              <%= form_tag( posts_url, :method => "get", role:"search", :class => 'nav navbar-form navbar-left') do %>
               <%= text_field_tag :search, params[:search], placeholder: "Search a post.." ,class:"form-control", :required => "true" %>
               <!-- <div class="input-group-btn"> -->
 
